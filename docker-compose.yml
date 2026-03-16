@@ -38,10 +38,11 @@ services:
     networks:
       - compliance-net
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/heartbeat"]
-      interval: 10s
-      timeout: 5s
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/api/v1/heartbeat')\" || exit 1"]
+      interval: 15s
+      timeout: 10s
       retries: 5
+      start_period: 30s
 
   # -------------------------------------------------------
   # Langfuse - Observabilidad de LLM
