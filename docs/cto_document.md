@@ -26,9 +26,8 @@ aproximadamente **2,400 alertas/día.**
 > ¹ *Tasa de alerta del 0.12%: alineada con el rango de industria de 0.05%–0.30% para banca
 > retail en mercados emergentes con modelos de detección automatizada (XGBoost/ML).
 > Fuente de referencia: ACAMS, "Best Practice Guide: Transaction Monitoring – Effectiveness
-> Matters" (2023) — ;
-> guía completa disponible para miembros ACAMS. El costo del analista ($3,200 USD/mes)
-> corresponde al promedio de mercado para analistas AML senior en Colombia, México y Perú
+> Matters" (2023);  guía completa disponible para miembros ACAMS.
+> El costo del analista ($3,200 USD/mes) corresponde al promedio de mercado para analistas AML senior en Colombia, México y Perú
 > (referencias: Glassdoor CO, OCC México, LinkedIn Jobs PE — 2024).*
 
 **El resultado:** los analistas priorizan manualmente qué 76 alertas atender cada día,
