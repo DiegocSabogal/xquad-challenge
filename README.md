@@ -28,13 +28,14 @@ Sistema multi-agente para análisis automático de alertas de compliance financi
 git clone <repo-url>
 cd xquad-challenge
 cp .env.example .env
-# LLM_MODE=mock no requiere API keys
+# LLM_MODE=mock no requiere API keys — funciona sin ninguna API key
 
-docker-compose up --build
+docker compose --env-file .env up --build
 ```
 
 La API queda disponible en `http://localhost:8000`.
-Langfuse (observabilidad) en `http://localhost:3000`.
+Swagger UI interactivo en `http://localhost:8000/docs`.
+Observabilidad: Langfuse Cloud en `https://cloud.langfuse.com` (requiere cuenta gratuita y configurar `LANGFUSE_PUBLIC_KEY` / `LANGFUSE_SECRET_KEY` en `.env`; opcional).
 
 ### Opción B — Python local (sin Docker)
 
@@ -67,6 +68,8 @@ pytest tests/ --cov=. --cov-report=term-missing --cov-fail-under=60
 ```
 
 ---
+
+## Challenge 01 — Sistema Agéntico
 
 ## Arquitectura del sistema
 
