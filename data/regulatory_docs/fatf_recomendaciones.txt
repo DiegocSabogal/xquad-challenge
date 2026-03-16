@@ -1,0 +1,63 @@
+RECOMENDACIONES GAFI / FATF — GRUPO DE ACCIÓN FINANCIERA INTERNACIONAL
+Estándares Internacionales sobre la Lucha contra el Lavado de Activos
+y el Financiamiento del Terrorismo y la Proliferación
+Revisión: Febrero 2023 — Aplicable a miembros LATAM (Colombia, México, Perú)
+
+RECOMENDACIÓN 1 — Evaluación de Riesgos y Aplicación de un Enfoque Basado en Riesgos
+Los países deben identificar, evaluar y entender los riesgos de lavado de activos y
+financiamiento del terrorismo a los que están expuestos. Con base en esa evaluación, deben
+aplicar un enfoque basado en riesgos (EBR) para asegurar que las medidas de prevención
+sean proporcionales a los riesgos identificados.
+Los sistemas automatizados de detección (como los basados en ML) deben ser calibrados
+según el perfil de riesgo de cada jurisdicción.
+REFERENCIA CRUZADA: Ver Recomendación 10 para debida diligencia del cliente.
+
+RECOMENDACIÓN 10 — Debida Diligencia del Cliente (DDC)
+Las instituciones financieras deben realizar DDC en los siguientes casos:
+a) Al establecer relaciones comerciales
+b) Al realizar transacciones ocasionales que superen USD 15,000 (o equivalente)
+c) Cuando exista sospecha de lavado de activos o financiamiento del terrorismo
+d) Cuando existan dudas sobre la veracidad de la información obtenida anteriormente
+
+La DDC comprende:
+- Identificación y verificación de la identidad del cliente
+- Identificación del beneficiario final (cuando aplique)
+- Comprensión del propósito y naturaleza de la relación comercial
+- Monitoreo continuo de la relación comercial
+
+RECOMENDACIÓN 12 — Personas Políticamente Expuestas (PEP)
+Las instituciones financieras deben aplicar medidas de DDC reforzada para las relaciones
+comerciales o transacciones con personas políticamente expuestas extranjeras.
+Para PEPs nacionales y de organizaciones internacionales, deben aplicar medidas de DDC
+reforzada cuando la relación de negocio presente un riesgo más elevado.
+
+MEDIDAS ADICIONALES PARA PEPs:
+a) Contar con sistemas de gestión de riesgo apropiados para determinar si el cliente es PEP
+b) Obtener aprobación de la alta dirección para establecer o continuar relaciones comerciales
+c) Tomar medidas razonables para establecer el origen del patrimonio y del dinero
+d) Llevar a cabo un monitoreo continuo reforzado de la relación
+
+RECOMENDACIÓN 16 — Transferencias Electrónicas (Wire Transfers)
+Los países deben asegurar que las instituciones financieras incluyan información precisa
+y significativa sobre el ordenante y el beneficiario en las transferencias electrónicas.
+Para transferencias nacionales: nombre completo, número de cuenta, y dirección o
+número de identificación nacional.
+Para transferencias internacionales: nombre completo, número de cuenta (o identificador
+único de transacción), y al menos uno de: dirección, número de identificación nacional,
+o fecha y lugar de nacimiento del ordenante.
+
+UMBRAL DE REPORTE INTERNACIONAL: USD 1,000 o equivalente para transferencias
+que crucen fronteras internacionales.
+REFERENCIA CRUZADA: Ver Recomendación 10 y normativas locales UIAF/CNBV/SBS.
+
+RECOMENDACIÓN 20 — Reporte de Transacciones Sospechosas
+Si una institución financiera sospecha, o tiene motivos razonables para sospechar, que
+los fondos son producto de una actividad delictiva o están relacionados con el
+financiamiento del terrorismo, debe reportarlo a la Unidad de Inteligencia Financiera (UIF)
+correspondiente de manera inmediata.
+Este reporte debe realizarse independientemente del monto de la transacción.
+La institución no debe informar al cliente ni a terceros que se ha realizado el reporte.
+
+NOTA PARA SISTEMAS AUTOMATIZADOS: Los modelos de ML que detectan transacciones
+sospechosas deben ser capaces de generar el reporte equivalente con la justificación
+del razonamiento aplicado, para cumplir con los requisitos de auditabilidad.

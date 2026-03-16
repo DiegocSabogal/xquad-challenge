@@ -1,0 +1,62 @@
+OFICINA DE CONTROL DE ACTIVOS EXTRANJEROS (OFAC)
+U.S. Department of the Treasury — Programa de Sanciones
+Referencia para Entidades Financieras LATAM con Exposición a Contrapartes EE.UU.
+Versión: Enero 2025
+
+MARCO GENERAL
+La OFAC administra y hace cumplir las sanciones económicas y comerciales basadas en
+la política exterior de EE.UU. Las entidades financieras en LATAM que realicen transacciones
+en USD o con contrapartes estadounidenses están sujetas a estas regulaciones.
+Las violaciones pueden resultar en multas civiles de hasta USD 1,000,000 por transacción.
+
+LISTA SDN (Specially Designated Nationals and Blocked Persons)
+La lista SDN contiene individuos y entidades cuyos activos son bloqueados y con quienes
+los ciudadanos estadounidenses están en general prohibidos de hacer negocios.
+Las entidades financieras LATAM deben verificar contrapartes contra esta lista en:
+- Transferencias internacionales
+- Apertura de nuevas relaciones comerciales
+- Revisiones periódicas de clientes existentes (mínimo anual)
+
+PROCESO DE VERIFICACIÓN OBLIGATORIO:
+1. Screening inicial contra lista SDN completa y lista consolidada de la ONU
+2. Verificación fuzzy matching con umbral >= 85% de similitud fonética
+3. Si hay coincidencia: bloquear transacción y reportar inmediatamente
+4. Conservar registro de la verificación por mínimo 5 años
+
+CATEGORÍAS DE SANCIONES RELEVANTES PARA LATAM
+- Programas de narcotráfico: Lista SDNTK (Specially Designated Narcotics Traffickers)
+- Programas de terrorismo: Lista SDGT (Specially Designated Global Terrorists)
+- Programas país: Venezuela (E.O. 13884), Cuba (CACR), Nicaragua (E.O. 13851)
+REFERENCIA CRUZADA: Coordinar con listas nacionales UIAF Colombia, CNBV México y SBS Perú.
+
+REGLA 50% (Fifty Percent Rule)
+Una entidad que sea propiedad en un 50% o más (directa o indirectamente) por una
+persona o entidad bloqueada, también es considerada bloqueada, aunque no aparezca
+explícitamente en la lista SDN.
+Los sistemas de compliance deben implementar lógica de beneficiario final para detectar
+este tipo de casos.
+
+LICENCIAS OFAC
+Ciertas transacciones con partes sancionadas pueden estar autorizadas mediante licencias:
+- Licencias generales: autorizan categorías de transacciones para todas las personas
+- Licencias específicas: autorizan transacciones particulares para personas específicas
+Las entidades deben verificar si existe licencia aplicable antes de bloquear una transacción.
+
+OBLIGACIONES DE REPORTE
+- Reporte inmediato al bloquear activos de persona en lista SDN
+- Reporte anual del inventario de activos bloqueados
+- Conservación de registros por 5 años desde la fecha de la transacción
+
+INTEGRACIÓN CON SISTEMAS AML AUTOMATIZADOS
+Los sistemas de detección automática (como el presente sistema de compliance agéntico)
+deben:
+1. Integrar screening OFAC como paso previo a la evaluación de riesgo
+2. Documentar el resultado del screening en el audit trail de cada alerta
+3. Tratar cualquier coincidencia SDN como escalación obligatoria al equipo de compliance
+4. No delegar la decisión de bloqueo a un modelo de ML sin revisión humana
+
+UMBRALES DE ALERTA AUTOMÁTICA:
+- Coincidencia exacta nombre/entidad: BLOQUEO INMEDIATO, confianza = 1.0
+- Coincidencia fuzzy >= 85%: ESCALACIÓN OBLIGATORIA para revisión humana
+- Coincidencia fuzzy 70-84%: REQUEST_INFO para confirmar identidad
+- Coincidencia < 70%: Continuar evaluación de riesgo normal
