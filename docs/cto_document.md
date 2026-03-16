@@ -28,7 +28,7 @@ aproximadamente **2,400 alertas/día.**
 > Fuente de referencia: ACAMS, "Best Practice Guide: Transaction Monitoring – Effectiveness
 > Matters" (2023);  guía completa disponible para miembros ACAMS.
 > El costo del analista ($3,200 USD/mes) corresponde al promedio de mercado para analistas AML senior en Colombia, México y Perú
-> (referencias: Glassdoor CO, OCC México, LinkedIn Jobs PE — 2024).*
+> (referencias: Glassdoor CO, OCC México, LinkedIn Jobs PE).*
 
 **El resultado:** los analistas priorizan manualmente qué 76 alertas atender cada día,
 descartando implícitamente las 2,324 restantes. No por falta de voluntad, sino porque
