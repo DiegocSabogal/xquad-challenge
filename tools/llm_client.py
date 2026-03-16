@@ -25,14 +25,30 @@ class BaseLLMClient(ABC):
         pass
 
     def complete_json(self, system_prompt: str, user_message: str) -> dict[str, Any]:
-        """Llama al LLM y parsea la respuesta como JSON."""
+        """
+        Llama al LLM y parsea la respuesta como JSON.
+        Maneja distintos formatos de respuesta: JSON puro, bloques ```json, o JSON embebido.
+        """
         raw = self.complete(system_prompt, user_message)
-        # Extraer JSON si viene envuelto en ```json ... ```
+
+        # Extraer JSON si viene envuelto en bloques de código
         if "```json" in raw:
             raw = raw.split("```json")[1].split("```")[0].strip()
         elif "```" in raw:
             raw = raw.split("```")[1].split("```")[0].strip()
-        return json.loads(raw)
+        else:
+            # Extraer desde el primer { hasta el último } si hay texto extra
+            start = raw.find("{")
+            end = raw.rfind("}") + 1
+            if start != -1 and end > start:
+                raw = raw[start:end]
+
+        try:
+            return json.loads(raw)
+        except json.JSONDecodeError:
+            # Segundo intento: limpiar caracteres problemáticos comunes
+            raw = raw.replace("\n", " ").replace("\r", "")
+            return json.loads(raw)
 
 
 class MockLLMClient(BaseLLMClient):
@@ -162,7 +178,7 @@ class ClaudeLLMClient(BaseLLMClient):
     def complete(self, system_prompt: str, user_message: str) -> str:
         message = self._client.messages.create(
             model=self._model,
-            max_tokens=2048,
+            max_tokens=4096,  # Aumentado: el audit trail completo puede ser extenso
             system=system_prompt,
             messages=[{"role": "user", "content": user_message}],
         )
