@@ -11,12 +11,15 @@
 |---|---|---|
 | Alertas diarias | ~2,400 | 0.12% de 2M transacciones |
 | Horas por alerta | 4.2 h | Dato del brief |
-| Horas analista/año | 1,760 h | 220 días × 8 horas |
-| Analistas necesarios para volumen actual | **~240 analistas** | 2,400 × 4.2h ÷ 8h |
+| Capacidad real del equipo actual (40 analistas) | **~76 alertas/día** | 40 × 8h ÷ 4.2h |
+| Alertas sin revisar cada día | **~2,324 (97%)** | 2,400 − 76 |
+| Analistas necesarios para cubrir el volumen completo | **~1,260 analistas** | 2,400 × 4.2h ÷ 8h |
 | Costo analista/mes (LATAM promedio) | $3,200 USD | Estimado mercado CO/MX/PE |
-| **Costo anual del proceso manual** | **~$9.2M USD** | 240 × $3,200 × 12 |
+| **Costo anual si se contrata el equipo completo** | **~$48.4M USD** | 1,260 × $3,200 × 12 |
 
-> *El 68% son falsos positivos ($6.3M USD desperdiciados en revisiones innecesarias).*
+> ⚠️ **Riesgo regulatorio crítico:** Con solo 40 analistas, el 97% de las alertas diarias quedan sin revisar. Cada alerta no procesada es una ventana de exposición a multas regulatorias de hasta $2M USD por incidente (UIAF, CNBV, SBS). La empresa enfrenta dos opciones igualmente costosas: contratar ~1,220 analistas adicionales ($48M/año) o absorber el riesgo regulatorio. Existe además un tercer costo oculto: los analistas actuales trabajan bajo presión extrema para priorizar manualmente las 76 alertas que pueden atender, incurriendo en horas extra no sostenibles.
+
+> *El 68% de las alertas procesadas son falsos positivos — tiempo humano desperdiciado en casos que no lo ameritan.*
 
 ---
 
@@ -56,13 +59,14 @@ Alerta nueva
 
 El 80% de las alertas (las de riesgo bajo y medio) se resuelven automáticamente. El 20% restante llega al analista con toda la investigación hecha — reduciendo el tiempo humano de 4.2h a ~30 min.
 
-**Analistas necesarios con el sistema: ~28** (vs 240 actuales)
+**Analistas necesarios con el sistema: ~28** (vs los 1,260 que requeriría el proceso manual completo, o vs los 40 actuales que solo cubren el 3% del volumen)
 
 | Concepto | Año 1 |
 |---|---|
-| Ahorro en planilla (212 analistas liberados) | +$8.1M USD |
-| Ahorro en errores y multas regulatorias (est.) | +$500K USD |
-| **Ahorro total estimado** | **+$8.6M USD** |
+| Evitar contratación de ~1,220 analistas adicionales | +$46.8M USD (riesgo evitado) |
+| Optimización del equipo actual de 40 → 28 analistas | +$460K USD |
+| Reducción de exposición a multas regulatorias (97% alertas sin revisar → 0%) | +$1.2M USD est. |
+| **Beneficio total estimado** | **+$48.5M USD** |
 
 ### Costo de implementación
 
