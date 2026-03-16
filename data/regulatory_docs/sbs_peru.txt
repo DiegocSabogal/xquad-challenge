@@ -1,0 +1,52 @@
+REGLAMENTO DE GESTIÓN DE RIESGOS DE LAVADO DE ACTIVOS Y FINANCIAMIENTO DEL TERRORISMO
+SBS - Superintendencia de Banca, Seguros y AFP - Perú
+Resolución SBS N°2660-2015 y modificatorias
+
+Artículo 1 - Objetivo
+El presente Reglamento establece los requisitos mínimos que deben cumplir las empresas
+supervisadas para gestionar adecuadamente los riesgos de lavado de activos y financiamiento
+del terrorismo (LA/FT), en concordancia con las Recomendaciones del GAFI.
+
+Artículo 5 - Sistema de Detección Automática
+Las empresas supervisadas pueden implementar sistemas tecnológicos para la detección
+automática de operaciones sospechosas. Sin embargo, estos sistemas son herramientas de
+apoyo y NO tienen capacidad de decisión autónoma sobre el reporte o no de operaciones.
+Un oficial de cumplimiento certificado debe revisar y validar las decisiones del sistema.
+
+Artículo 8 - Umbrales de Reporte Perú
+Las operaciones en efectivo que superen S/. 50,000 (aproximadamente $13,500 USD) o su
+equivalente en moneda extranjera deben reportarse a la UIF-Perú. Las transferencias
+electrónicas que superen $10,000 USD o su equivalente deben reportarse en el día.
+
+Artículo 15 - Transacciones Fraccionadas
+Cuando una empresa detecte que un cliente ha realizado, en el lapso de 30 días calendario,
+transacciones que individualmente no alcanzan el umbral pero que en conjunto sí lo superan
+hacia el mismo beneficiario, se presume estructuración. La empresa debe:
+a) Reportar a la UIF-Perú dentro de las 24 horas de detectada la presunción
+b) Incluir en el reporte las transacciones individuales y el beneficiario común
+c) Mantener en estado de alerta el monitoreo de dicho cliente por 90 días adicionales
+REFERENCIA CRUZADA: Ver Artículo 8 para umbrales de reporte.
+
+Artículo 18 - Personas Políticamente Expuestas (PEPs)
+Las empresas supervisadas deben:
+a) Mantener un registro actualizado de clientes PEPs, actualizado trimestralmente
+b) Para TODA alerta generada sobre clientes PEP, independientemente del nivel de riesgo
+   calculado por sistemas automatizados, ESCALAR AL OFICIAL DE CUMPLIMIENTO SENIOR
+c) El oficial de cumplimiento debe resolver la alerta PEP en máximo 4 horas hábiles
+d) Toda decisión sobre alertas PEP debe quedar documentada con nombre del oficial,
+   cargo, fecha, hora y justificación detallada
+e) Los sistemas de IA/ML NO pueden tomar decisiones finales sobre alertas de PEPs bajo
+   ninguna circunstancia, incluso si el score de riesgo es bajo
+
+Artículo 22 - Beneficiario Final
+Para personas jurídicas, la empresa debe identificar al beneficiario final (persona natural
+que posea directa o indirectamente el 25% o más del capital o de los derechos de voto).
+Si no es posible identificar al beneficiario final, se debe aplicar debida diligencia
+reforzada y considerar la operación como de alto riesgo.
+
+Artículo 25 - Jurisdicciones de Alto Riesgo
+Las operaciones que involucren contrapartes en jurisdicciones incluidas en las listas
+del GAFI de países no cooperantes requieren aprobación del Directorio antes de ejecutarse.
+Panamá, aunque no está en lista negra, requiere verificación adicional de beneficiario final
+para transferencias que superen $25,000 USD.
+REFERENCIA CRUZADA: Ver Artículo 18 para requisitos adicionales si la contraparte es PEP.

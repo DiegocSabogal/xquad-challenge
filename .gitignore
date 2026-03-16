@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Entorno virtual
+.venv/
+venv/
+env/
+.env.local
+
+# Secretos — NUNCA subir al repo
+.env
+
+# Tests y cobertura
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Jupyter
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# ChromaDB local
+chroma_data/
+*.sqlite3
+
+# Modelos descargados (sentence-transformers)
+models/
+*.bin
+*.safetensors
+
+# OS
+.DS_Store
+Thumbs.db

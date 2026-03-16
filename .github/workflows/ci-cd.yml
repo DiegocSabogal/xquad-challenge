@@ -1,0 +1,141 @@
+name: CI/CD — Compliance Agent
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+env:
+  PROJECT_ID: finserv-latam-compliance
+  REGION: us-central1
+  REGISTRY: us-central1-docker.pkg.dev
+  REPOSITORY: compliance-agent
+  SERVICE_NAME: compliance-api
+  COVERAGE_THRESHOLD: 60
+
+jobs:
+  # ============================================================
+  # JOB 1: Tests y cobertura
+  # El pipeline falla si la cobertura cae por debajo del 60%
+  # ============================================================
+  test:
+    name: Tests y Cobertura
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: "pip"
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Ejecutar tests con cobertura
+        run: |
+          pytest tests/ \
+            --cov=. \
+            --cov-report=xml \
+            --cov-report=term-missing \
+            --cov-fail-under=${{ env.COVERAGE_THRESHOLD }} \
+            -v
+        env:
+          LLM_MODE: mock  # Siempre mock en CI — sin API keys reales
+
+      - name: Publicar reporte de cobertura
+        uses: codecov/codecov-action@v4
+        if: always()
+        with:
+          file: ./coverage.xml
+
+  # ============================================================
+  # JOB 2: Build y push de imagen Docker a Artifact Registry
+  # Solo en push a main/develop, después de que pasen los tests
+  # ============================================================
+  build-push:
+    name: Build y Push Docker
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.event_name == 'push'
+
+    permissions:
+      contents: read
+      id-token: write  # Para Workload Identity Federation
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Autenticar en GCP (Workload Identity)
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
+          service_account: ${{ secrets.WIF_SERVICE_ACCOUNT }}
+
+      - name: Configurar Docker para Artifact Registry
+        run: gcloud auth configure-docker ${{ env.REGISTRY }} --quiet
+
+      - name: Construir imagen Docker
+        run: |
+          docker build \
+            --tag ${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/api:${{ github.sha }} \
+            --tag ${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/api:latest \
+            .
+
+      - name: Push imagen a Artifact Registry
+        run: |
+          docker push ${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/api:${{ github.sha }}
+          docker push ${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/api:latest
+
+  # ============================================================
+  # JOB 3: Deploy a Cloud Run
+  # Solo en push a main (producción)
+  # ============================================================
+  deploy:
+    name: Deploy a Cloud Run
+    runs-on: ubuntu-latest
+    needs: build-push
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    permissions:
+      contents: read
+      id-token: write
+
+    environment:
+      name: production
+      url: ${{ steps.deploy.outputs.url }}
+
+    steps:
+      - name: Autenticar en GCP
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
+          service_account: ${{ secrets.WIF_SERVICE_ACCOUNT }}
+
+      - name: Deploy a Cloud Run
+        id: deploy
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: ${{ env.SERVICE_NAME }}-prod
+          region: ${{ env.REGION }}
+          image: ${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/api:${{ github.sha }}
+          env_vars: |
+            LLM_MODE=gemini
+            GOOGLE_CLOUD_PROJECT=${{ env.PROJECT_ID }}
+            VERTEX_AI_LOCATION=${{ env.REGION }}
+
+      - name: Verificar health check post-deploy
+        run: |
+          sleep 10
+          curl -f "${{ steps.deploy.outputs.url }}/health" || exit 1
+
+      - name: Notificar deploy exitoso
+        if: success()
+        run: |
+          echo "Deploy exitoso: ${{ steps.deploy.outputs.url }}"
+          echo "Imagen: ${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/api:${{ github.sha }}"

@@ -1,0 +1,50 @@
+DISPOSICIONES DE CARÁCTER GENERAL APLICABLES A INSTITUCIONES DE CRÉDITO
+CNBV - Comisión Nacional Bancaria y de Valores - México
+Materia: Prevención de Operaciones con Recursos de Procedencia Ilícita
+Publicación: DOF 2024
+
+Disposición 100 - Marco General
+Las instituciones de crédito deben establecer medidas y procedimientos para prevenir y detectar
+actos, omisiones u operaciones que pudieran favorecer, prestar ayuda, auxilio o cooperación de
+cualquier especie para la comisión de los delitos de lavado de dinero y financiamiento al
+terrorismo previstos en los artículos 139 Quáter y 400 Bis del Código Penal Federal.
+
+Disposición 105 - Aviso de Operaciones Relevantes
+Las instituciones deben presentar a la CNBV avisos sobre operaciones en efectivo en moneda
+nacional o extranjera, metales preciosos amonedados, cheques de viajero y otros instrumentos,
+por montos iguales o superiores a $7,500 USD o su equivalente en moneda nacional.
+
+Disposición 110 - Operaciones Inusuales
+Se consideran inusuales las operaciones que no sean consistentes con los antecedentes,
+actividad económica o perfil transaccional del cliente. Las instituciones tienen 60 días
+hábiles para determinar si una operación inusual debe reportarse como sospechosa.
+El sistema automatizado puede apoyar la detección pero NO reemplaza el juicio humano
+en la determinación final de reporte.
+
+Disposición 115 - Operaciones Preocupantes
+Las operaciones que realicen trabajadores, directivos o apoderados de las propias instituciones
+que pudieran contravenir o vulnerar la aplicación de estas disposiciones deben reportarse
+de manera inmediata, sin el plazo de los 60 días hábiles.
+
+Disposición 115 Bis - Personas Políticamente Expuestas (PEPs)
+Las instituciones deben identificar a los clientes que sean PEPs o familiares de PEPs.
+Para estos clientes:
+a) El nivel de monitoreo debe ser reforzado y continuo
+b) Las alertas generadas por sistemas automatizados deben ser revisadas por personal
+   de compliance de nivel senior (gerencial o superior)
+c) Las operaciones que generen alerta en clientes PEP deben reportarse como inusuales
+   dentro de las primeras 24 horas de detectadas, independientemente del monto
+d) Ningún sistema automatizado puede emitir decisión final sobre alertas de PEPs
+REFERENCIA CRUZADA: Ver Disposición 120 para lista de cargos considerados PEP en México.
+
+Disposición 120 - Lista de Cargos PEP México
+Se consideran PEPs en México: Presidente de la República, Secretarios de Estado,
+Subsecretarios, Directores Generales de organismos descentralizados, Gobernadores,
+Presidentes Municipales de ciudades con más de 100,000 habitantes, Senadores,
+Diputados Federales, Ministros de la Suprema Corte de Justicia, entre otros.
+
+Disposición 130 - Transferencias Internacionales
+Toda transferencia a o desde jurisdicciones consideradas de alto riesgo por el GAFI
+requiere verificación adicional de la fuente de fondos y destino final. Las transferencias
+fraccionadas hacia el mismo beneficiario en ventanas de 7 días se consolidan para
+efectos del umbral de reporte.

@@ -1,0 +1,62 @@
+CIRCULAR BÁSICA JURÍDICA - UIAF COLOMBIA
+Unidad de Información y Análisis Financiero
+Actualización: Enero 2025
+
+CAPÍTULO XI: PREVENCIÓN DE LAVADO DE ACTIVOS Y FINANCIACIÓN DEL TERRORISMO
+
+Artículo 1 - Objeto y Alcance
+Las entidades vigiladas por la UIAF están obligadas a implementar sistemas de prevención y control
+del lavado de activos y la financiación del terrorismo (SIPLAFT). Estas disposiciones aplican a
+todas las operaciones financieras realizadas en territorio colombiano o que involucren clientes
+con domicilio en Colombia.
+
+Artículo 5 - Reporte de Operaciones Sospechosas (ROS)
+Toda entidad financiera debe reportar a la UIAF, de manera inmediata y no mayor a 24 horas,
+cualquier operación que genere dudas razonables sobre su licitud, independientemente del monto.
+El reporte no requiere certeza sobre la ilicitud; basta con la sospecha razonada.
+
+Artículo 8 - Umbral de Reporte de Operaciones en Efectivo
+Las operaciones en efectivo individuales o acumuladas en un mes calendario que superen los
+$50,000,000 COP (aproximadamente $12,500 USD) deben ser reportadas automáticamente.
+Las transferencias internacionales que superen $10,000 USD deben reportarse en el día.
+
+Artículo 15 - Estructuración (Smurfing)
+Se considera estructuración la práctica de dividir operaciones en montos menores al umbral
+de reporte con el propósito de evadir los controles. Dos o más transacciones realizadas en un
+período de 72 horas hacia el mismo beneficiario, que en conjunto superen el umbral, se
+presumen estructuración. La entidad debe reportar inmediatamente y congelar cautelarmente
+la(s) transacción(es) pendiente(s).
+REFERENCIA CRUZADA: Ver Artículo 8 para umbrales aplicables.
+
+Artículo 18 - Transferencias Internacionales
+Toda transferencia internacional debe verificar que el beneficiario no esté incluido en listas
+OFAC, ONU, o listas nacionales de personas vinculadas al terrorismo. La entidad emisora
+es corresponsable del destino de los fondos hasta la confirmación de recepción por parte
+de una entidad regulada.
+REFERENCIA CRUZADA: Ver Artículo 20 para procedimiento de debida diligencia reforzada.
+
+Artículo 20 - Debida Diligencia Reforzada
+Los siguientes clientes requieren debida diligencia reforzada y monitoreo continuo:
+a) Personas Políticamente Expuestas (PEPs) y sus familiares hasta segundo grado de consanguinidad
+b) Clientes con operaciones en jurisdicciones de alto riesgo (lista GAFI)
+c) Personas jurídicas con estructura accionaria compleja u opaca
+d) Clientes con actividades económicas de alto riesgo (casinos, construcción, minerales)
+Las alertas de clientes bajo debida diligencia reforzada deben escalar SIEMPRE al equipo
+de compliance senior, sin excepción.
+
+CAPÍTULO XII: PERSONAS POLÍTICAMENTE EXPUESTAS (PEPs)
+
+Artículo 25 - Definición de PEP
+Son Personas Políticamente Expuestas aquellas que desempeñan o han desempeñado (en los
+últimos 5 años) funciones públicas prominentes: jefes de Estado, ministros, parlamentarios,
+magistrados, altos funcionarios militares, directivos de empresas estatales, entre otros.
+También se consideran PEPs los familiares directos y colaboradores cercanos.
+
+Artículo 26 - Obligaciones para Clientes PEP
+Para todo cliente identificado como PEP, la entidad debe:
+a) Escalar TODAS las alertas al equipo de compliance senior, sin excepción de monto
+b) Revisar la fuente de fondos al momento de cada operación significativa
+c) Actualizar la debida diligencia al menos una vez al año
+d) El sistema automático NO puede tomar decisiones finales sobre alertas de PEPs;
+   la decisión final siempre recae en un analista humano certificado
+REFERENCIA CRUZADA: Ver Artículo 20 para procedimiento general de debida diligencia reforzada.
