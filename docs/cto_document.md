@@ -30,7 +30,7 @@ aproximadamente **2,400 alertas/día.**
 > El costo del analista ($3,200 USD/mes) corresponde al promedio de mercado para analistas AML senior en Colombia, México y Perú
 > (referencias: Glassdoor CO, OCC México, LinkedIn Jobs PE).*
 
-**El resultado:** los analistas priorizan manualmente qué 76 alertas atender cada día,
+**El resultado:** los analistas priorizan manualmente 76 alertas cada día,
 descartando implícitamente las 2,324 restantes. No por falta de voluntad, sino porque
 es matemáticamente imposible hacer más con el equipo actual.
 
