@@ -180,6 +180,107 @@ puede resultar en multas significativas y suspensión de licencias en Colombia, 
 
 ---
 
+## 5. Observabilidad en Producción
+
+El sistema registra métricas operacionales en tiempo real via **Langfuse** (integrado en el
+código) y **Cloud Monitoring** (GCP). Estas métricas permiten detectar degradación del
+sistema antes de que impacte decisiones regulatorias.
+
+### Métricas críticas monitoreadas
+
+#### 5.1 Latencia p95 del pipeline completo
+
+```
+Qué mide:   El tiempo que tarda el 95% de las alertas en completarse.
+            (El p95 es más representativo que el promedio porque excluye outliers.)
+
+Cómo:       pipeline_duration_ms se registra en cada respuesta de la API.
+            Langfuse calcula el percentil 95 por ventana de 1 hora.
+
+Umbral:     p95 < 30 segundos en condiciones normales.
+Alerta:     Si p95 > 60 segundos por más de 5 minutos → PagerDuty al equipo técnico.
+
+Causa típica de degradación: modelo de embeddings recargándose por restart del container
+→ solución: inicialización del retriever como singleton al arranque (ver roadmap).
+```
+
+#### 5.2 Costo por alerta procesada
+
+```
+Qué mide:   Tokens de entrada + salida consumidos por Claude/Gemini en cada alerta,
+            multiplicados por la tarifa vigente de la API.
+
+Cómo:       Langfuse registra usage.input_tokens y usage.output_tokens por generación.
+            Cloud Billing exporta el gasto diario de Vertex AI / Anthropic a BigQuery.
+
+Referencia: ~$0.002–$0.005 USD por alerta con claude-haiku o gemini-flash.
+            Con 2,400 alertas/día → $4.80–$12 USD/día → $144–$360 USD/mes.
+            (Incluido en los $85,000/año de infraestructura GCP.)
+
+Alerta:     Si costo/alerta aumenta >50% vs. semana anterior → revisar prompts
+            (posible loop o respuesta anormalmente larga del LLM).
+```
+
+#### 5.3 Tasa de escalación al humano
+
+```
+Qué mide:   Porcentaje de alertas que terminan en decision = "escalate".
+
+Cómo:       Contador en Langfuse: decision.value agrupado por día.
+            Dashboard muestra: escalate / discard / request_info como serie temporal.
+
+Referencia: Se espera ~20% de escalaciones (el 80% resuelto automáticamente).
+Alertas:
+  - Si tasa de escalación cae a 0% → posible bug en la regla PEP o en el scoring.
+  - Si tasa supera 60% → el modelo de riesgo puede estar sobre-alertando;
+    revisar el prompt del Agente 2 o recalibrar los umbrales en config.py.
+```
+
+#### 5.4 Detección de drift del LLM
+
+```
+Qué mide:   Cambio en el comportamiento del modelo a lo largo del tiempo,
+            sin que los datos de entrada hayan cambiado.
+
+Señales de drift:
+  a) risk_score promedio sube o baja >1.5 desviaciones estándar vs. baseline semanal.
+  b) confidence promedio de decisiones cae por debajo de 0.70.
+  c) Distribución de decisiones cambia: ej. de 20/70/10 (escalate/discard/request_info)
+     a 50/40/10 sin cambio en el volumen de alertas.
+
+Cómo detectarlo:
+  - Langfuse exporta los scores a BigQuery cada hora.
+  - Una Cloud Function evalúa la distribución con una ventana deslizante de 7 días.
+  - Si detecta anomalía estadística → alerta a Slack del equipo de ML.
+
+Causa típica: actualización silenciosa del modelo base por el proveedor (ej. Anthropic
+actualiza claude-haiku). Mitigación: fijar la versión exacta del modelo en el código
+(actualmente: claude-haiku-4-5-20251001) y revisar changelogs del proveedor.
+```
+
+### Diagrama de flujo de observabilidad
+
+```
+Alerta procesada
+      │
+      ├─► Langfuse Cloud ──► Dashboard tiempo real
+      │     • pipeline_duration_ms          (latencia p95)
+      │     • decision, confidence          (tasa escalación)
+      │     • tokens entrada/salida         (costo/alerta)
+      │     • risk_score por semana         (drift LLM)
+      │
+      ├─► API response JSON ──► Cliente / analista humano
+      │     • audit_trail completo          (trazabilidad regulatoria)
+      │     • regulatory_references         (artículos aplicados)
+      │
+      └─► Cloud Monitoring (GCP)
+            • CPU/Memory Cloud Run          (salud infraestructura)
+            • Error rate 5xx               (estabilidad API)
+            • Request latency              (SLA operacional)
+```
+
+---
+
 *Documento preparado por el equipo de arquitectura de IA | Marzo 2026*
 *Todos los supuestos están detallados en las notas al pie. Los números pueden variar ±15%
 según el volumen real de alertas validado durante el piloto.*
