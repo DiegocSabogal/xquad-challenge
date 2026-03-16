@@ -4,6 +4,8 @@ Registra: trazas de agentes, latencias, costo estimado por alerta, y prompts.
 
 Si Langfuse no está disponible (LANGFUSE_ENABLED=false), usa un tracer no-op
 para que el sistema funcione sin observabilidad en desarrollo local.
+
+Compatibilidad: Langfuse SDK v4 (start_as_current_observation).
 """
 from contextlib import contextmanager
 from typing import Any, Generator
@@ -33,7 +35,10 @@ class NoOpTracer:
 
 
 class LangfuseTracer:
-    """Tracer real usando la SDK de Langfuse."""
+    """
+    Tracer real usando Langfuse SDK v4.
+    Usa start_as_current_observation() para crear spans anidados.
+    """
 
     def __init__(self):
         from langfuse import Langfuse
@@ -45,23 +50,24 @@ class LangfuseTracer:
 
     @contextmanager
     def span(self, name: str, **kwargs: Any) -> Generator:
-        trace = self._client.trace(name=name, **kwargs)
-        span = trace.span(name=name)
+        """Crea un span (observación) en Langfuse v4."""
         try:
-            yield span
-        finally:
-            span.end()
+            with self._client.start_as_current_observation(name=name) as span:
+                yield span
             self._client.flush()
+        except Exception:
+            # Fallback silencioso — el pipeline nunca se rompe por observabilidad
+            yield NoOpSpan()
 
     @contextmanager
     def generation(self, name: str, **kwargs: Any) -> Generator:
-        trace = self._client.trace(name=name)
-        generation = trace.generation(name=name, **kwargs)
+        """Crea una generación (llamada LLM) en Langfuse v4."""
         try:
-            yield generation
-        finally:
-            generation.end()
+            with self._client.start_as_current_observation(name=name) as span:
+                yield span
             self._client.flush()
+        except Exception:
+            yield NoOpSpan()
 
 
 _tracer = None
@@ -70,8 +76,8 @@ _tracer = None
 def get_tracer() -> NoOpTracer | LangfuseTracer:
     """
     Retorna el tracer activo.
-    - Si LANGFUSE_ENABLED=true y hay keys: tracer real
-    - En cualquier otro caso: no-op (no rompe el sistema)
+    - Si LANGFUSE_ENABLED=true y hay keys: LangfuseTracer (v4)
+    - En cualquier otro caso: NoOpTracer (no rompe el sistema)
     """
     global _tracer
     if _tracer is None:
