@@ -103,7 +103,13 @@ Se validarán con datos reales durante el piloto.*
 Inversión one-time:         $315,000
 Ahorro mensual neto:    $299,000 ÷ 12 = $24,917/mes
 
-Break-even: mes 13 (primer mes del segundo año operativo)
+Meses para recuperar la inversión:
+  $315,000 ÷ $24,917/mes = 12.6 meses → Break-even en el mes 13
+
+Interpretación: los 3 meses de implementación (Año 0) más
+12 meses de operación con el sistema alcanzan para cubrir
+exactamente la inversión inicial. A partir del mes 13,
+cada mes genera $24,917 de beneficio neto.
 
 ROI a 3 años:
   Inversión total:   $315,000 + ($85,000 × 3) = $570,000
@@ -114,9 +120,32 @@ ROI a 3 años:
 
 ### Desglose de la inversión one-time
 
+#### Equipo de implementación (3 meses)
+
+| Rol | Perfil | Costo/mes | 3 meses |
+|---|---|---|---|
+| 2 × Desarrollador Senior | Python, LangChain, FastAPI, GCP | $12,000 c/u | $72,000 |
+| 1 × ML Engineer | RAG, embeddings, LangGraph | $14,000 | $42,000 |
+| 1 × Tech Lead / Arquitecto | Diseño de sistema, seguridad, compliance técnico | $16,000 | $48,000 |
+| 1 × Project Manager | Coordinación, entregables, stakeholders | $8,000 | $24,000 |
+| QA, seguridad y revisión de compliance | Testing, pen-test, revisión regulatoria | — | $44,000 |
+| Imprevistos (15%) | — | — | $34,500 |
+| **Subtotal desarrollo** | | | **$264,500 ≈ $265,000** |
+
+*Nota: los rangos salariales corresponden a contratación por proyecto (freelance senior) en mercado LATAM/remoto.*
+
+#### Capacitación y change management
+
 | Concepto | Costo |
 |---|---|
-| Desarrollo e implementación (3 meses) | $280,000 |
+| Formación del equipo de analistas (2 sesiones) | $15,000 |
+| Documentación operativa y runbooks | $10,000 |
+| Soporte go-live (primer mes) | $10,000 |
+| **Subtotal capacitación** | **$35,000** |
+
+| **Concepto** | **Costo** |
+|---|---|
+| Desarrollo e implementación | $280,000 |
 | Capacitación y change management | $35,000 |
 | **Total inversión one-time** | **$315,000** |
 
